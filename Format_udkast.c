@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define MAX_ARRAY_LENGTH 5
+#define MAX_ARRAY_LENGTH 2
 #define MAX_CHAR_LENGTH 50 
 
 typedef enum {
