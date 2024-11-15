@@ -49,11 +49,11 @@ typedef struct {
 
 int main(){
     Film alleFilm[] = {
-        {"Inception", {ACTION, THRILLER, SCI_FI},3,Scared, 2010, English, 8.8},
+        {"Inception", {THRILLER, SCI_FI},3,Scared, 2010, English, 8.8},
         {"Forrest Gump", {DRAMA, COMEDY},2 , Happy, 1994, English, 8.8},
         {"The Shining", {HORROR, THRILLER},2, Angry, 1980, English, 8.4},
         {"Toy Story", {COMEDY, ANIMATED},2, Happy, 1995, English, 8.3},
-        {"The Matrix", {ACTION, THRILLER, SCI_FI},3, Tired, 1999, English, 8.7},
+        {"The Matrix", {THRILLER, SCI_FI},3, Tired, 1999, English, 8.7},
         {"Titanic", {ROMANCE, DRAMA},2, Sad, 1997, English, 7.8},
         {"Harry Potter", {FANTASY, ACTION},2, Happy, 2001, English, 7.6},
         {"Frozen", {ANIMATED, FANTASY},2, Happy, 2013, Danish, 7.5}
