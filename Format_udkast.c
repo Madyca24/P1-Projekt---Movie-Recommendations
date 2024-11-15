@@ -40,7 +40,7 @@ typedef enum {
 typedef struct {
     char titel[MAX_CHAR_LENGTH];      
     Genre genres[MAX_ARRAY_LENGTH];  
-    int numGenres     
+    int numGenres;     
     int mood;              
     int udgivelsesTid;
     int sprog;   
