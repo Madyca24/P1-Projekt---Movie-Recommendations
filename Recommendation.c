@@ -40,7 +40,7 @@ void language_seperator(){
     if (valgte_alder < 18){
         for (int i= 0; i < MAX_ARRAY_LENGTH; i++){
         
-            if(sorteret_sprog_array[i].age_restriction =< valgte_alder){
+            if(sorteret_sprog_array[i].age_restriction <= valgte_alder){
                 sorteret_sprog_og_alder_array[j] = sorteret_sprog_array[i];
                 j++;
             }
