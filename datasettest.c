@@ -23,7 +23,7 @@ int main(void) {
     }
     laesning_af_fil(f1, MOVIE_ARRAY_SIZE, movies);
     fclose(f1);
-   
+    print_array(movies,MOVIE_ARRAY_SIZE);
     return 0;
 } 
 
