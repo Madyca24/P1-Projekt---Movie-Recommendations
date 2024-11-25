@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Artem/Documents/programmering/prog eksamen/P1-Projekt---Movie-Recommendations",
-      "program": "c:/Users/Artem/Documents/programmering/prog eksamen/P1-Projekt---Movie-Recommendations/build/Debug/outDebug",
+      "cwd": "c:/Users/Artem/Documents/programmering/prog eksamen/P1-Projekt---Movie-Recommendations/MadsC_algotest",
+      "program": "c:/Users/Artem/Documents/programmering/prog eksamen/P1-Projekt---Movie-Recommendations/MadsC_algotest/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

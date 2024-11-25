@@ -143,7 +143,8 @@ movie movies[MOVIE_ARRAY_SIZE];
 
 void laesning_af_fil(FILE *f1, int length, movie movies[]);
 void print_array(movie movies[],int length);
-int main(void) {
+
+int main(void){
     
     FILE *f1 = fopen("Movie_dataset.txt", "r");
     if (f1 == NULL){
