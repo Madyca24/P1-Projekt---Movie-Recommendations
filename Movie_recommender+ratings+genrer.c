@@ -172,7 +172,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
     // Validering af sprog
     int valid_sprog = 0;
     while (!valid_sprog) {
-        printf("Indtast dit foretrukne sprog (English, Danish): ");
+        printf("Input your prefered language (English, Danish): ");
         scanf("%s", sprog);
          for (int i = 0; sprog[i]; i++) {
         sprog[i] = tolower(sprog[i]);
