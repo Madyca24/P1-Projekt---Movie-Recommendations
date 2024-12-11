@@ -24,16 +24,16 @@ typedef struct {
 movie movies[MOVIE_ARRAY_SIZE];
 
 void laesning_af_fil(FILE *f1, int length, movie movies[]);
-int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3, char *sprog, int *age, int *group);
+int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3, char *language, int *age, int *group);
 int comparescores(const void* a, const void* b);
-void recommendation(movie movies[], char *genre1, char *genre2, char *genre3, char *sprog, int age, int group, double rating, int length);
+void recommendation(movie movies[], char *genre1, char *genre2, char *genre3, char *language, int age, int group, double rating, int length);
 void battle_function (movie movies[]);
 
 int main(void) {
     char genre1[10];
     char genre2[10];
     char genre3[10];
-    char sprog[8];
+    char language[8];
     int age;
     int group;
     double rating;
@@ -46,8 +46,8 @@ int main(void) {
 
     laesning_af_fil(f1, MOVIE_ARRAY_SIZE, movies);
     fclose(f1);
-    survey(movies, MOVIE_ARRAY_SIZE, genre1, genre2, genre3, sprog, &age, &group);
-    recommendation(movies, genre1, genre2, genre3, sprog, age, group, rating, MOVIE_ARRAY_SIZE);
+    survey(movies, MOVIE_ARRAY_SIZE, genre1, genre2, genre3, language, &age, &group);
+    recommendation(movies, genre1, genre2, genre3, language, age, group, rating, MOVIE_ARRAY_SIZE);
     battle_function(movies);
 
     return 0;
@@ -68,7 +68,7 @@ void laesning_af_fil(FILE *f1, int length, movie movies[]) {
     }
 }
 
-int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3, char *sprog, int *age, int *group) {
+int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3, char *language, int *age, int *group) {
     // Introduktion til programmet
     printf("************************************************\n");
     printf("*                                              *\n");
@@ -114,7 +114,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
             valid_genre1 = 1;
             
         } else {
-            printf("The input wasn't a valid genre, please try again:\n");
+            printf("The input wasn't a valid genre. Please try again:\n");
         }
     }
 
@@ -140,7 +140,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
             valid_genre2 = 1;
             
         } else {
-            printf("The input wasn't a valid genre, please try again:\n");
+            printf("The input wasn't a valid genre. Please try again:\n");
         }
     }
 
@@ -165,25 +165,25 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
             valid_genre3 = 1;
             system(CLEAR);
         } else {
-            printf("The input wasn't a valid genre, please try again:\n");
+            printf("The input wasn't a valid genre. Please try again:\n");
         }
     }
 
-    // Validering af sprog
-    int valid_sprog = 0;
-    while (!valid_sprog) {
+    // Validering af language
+    int valid_language = 0;
+    while (!valid_language) {
         printf("Input your prefered language (English, Danish): ");
-        scanf("%s", sprog);
-         for (int i = 0; sprog[i]; i++) {
-        sprog[i] = tolower(sprog[i]);
+        scanf("%s", language);
+         for (int i = 0; language[i]; i++) {
+        language[i] = tolower(language[i]);
         }
 
-        if (strcmp(sprog, "english") == 0 ||
-            strcmp(sprog, "danish") == 0) {
-            valid_sprog = 1;
+        if (strcmp(language, "english") == 0 ||
+            strcmp(language, "danish") == 0) {
+            valid_language = 1;
             system(CLEAR);
         } else {
-            printf("The input wasn't a valid language, please try again:\n");
+            printf("The input wasn't a valid language. Please try again:\n");
         }
     }
 
@@ -197,7 +197,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
             valid_age = 1;
             system(CLEAR);
         } else {
-            printf("Invalid age input, age input must be between 1-120.\n");
+            printf("Invalid age input. Age input must be between 1-120.\n");
         }
     }
 
@@ -221,14 +221,14 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
 }
 
 
-void recommendation(movie movies[], char *genre1, char *genre2, char *genre3, char *sprog, int age, int group, double rating, int length) {
+void recommendation(movie movies[], char *genre1, char *genre2, char *genre3, char *language, int age, int group, double rating, int length) {
     for (int i = 0; i < length; i++) {
         int genre1match = 0,
             genre2match = 0,
             persontalmatch = 0;
         double rating = movies[i].rating;
 
-        if (strcmp(movies[i].movie_language, sprog) == 0 || age > movies[i].age_range){
+        if (strcmp(movies[i].movie_language, language) == 0 || age > movies[i].age_range){
             if (strcmp(movies[i].category_1, genre1) == 0 || strcmp(movies[i].category_1, genre2) == 0 || strcmp(movies[i].category_1, genre3) == 0)
             genre1match = 10;
 
