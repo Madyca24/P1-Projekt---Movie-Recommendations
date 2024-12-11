@@ -40,7 +40,7 @@ int main(void) {
 
     FILE *f1 = fopen("Movie_dataset.txt", "r");
     if (f1 == NULL) {
-        printf("Filen kunne ikke aabnes!\n");
+        printf("The file couldn't open!\n");
         exit(1);
     }
 
@@ -61,7 +61,7 @@ void laesning_af_fil(FILE *f1, int length, movie movies[]) {
                             &movie.group_size, &movie.rating, movie.link, &movie.score);
         
         if (result != 9) {
-            printf("der gik galt noget i indlaesning af film %d result %d\n", i, result);
+            printf("Something went wrong while trying to read the dataset %d result %d\n", i, result);
             exit(EXIT_FAILURE); 
         }
         movies[i] = movie;
