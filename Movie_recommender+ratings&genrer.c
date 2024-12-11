@@ -92,7 +92,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
         valid_genre2 = 0,
         valid_genre3 = 0;
     while (!valid_genre1) {
-        printf("Indtast dine tre foretrukne genrer (Action, Comedy, Crime, Drama, Thriller, Horror, Sci-fi, Romance, Fantasy, Animated, Family, Horror, Mystery):\n");
+        printf("Write your three favorite genres here (Action, Comedy, Crime, Drama, Thriller, Horror, Sci-fi, Romance, Fantasy, Animated, Family, Horror, Mystery):\n");
         scanf("%s", genre1);
          for (int i = 0; genre1[i]; i++) {
         genre1[i] = tolower(genre1[i]);
@@ -114,7 +114,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
             valid_genre1 = 1;
             
         } else {
-            printf("Denne genre er ikke tilgængelig. Vælg venligst en af de følgende muligheder:\n");
+            printf("The input wasn't a valid genre, please try again:\n");
         }
     }
 
@@ -140,7 +140,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
             valid_genre2 = 1;
             
         } else {
-            printf("Denne genre er ikke tilgængelig. Vælg venligst en af de overstående muligheder:\n");
+            printf("The input wasn't a valid genre, please try again:\n");
         }
     }
 
@@ -165,7 +165,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
             valid_genre3 = 1;
             system(CLEAR);
         } else {
-            printf("Denne genre er ikke tilgængelig. Vælg venligst en af de overstående muligheder:\n");
+            printf("The input wasn't a valid genre, please try again:\n");
         }
     }
 
@@ -183,35 +183,35 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
             valid_sprog = 1;
             system(CLEAR);
         } else {
-            printf("Dette sprog er ikke tilgængeligt. Vælg venligst en af de følgende muligheder:\n");
+            printf("The input wasn't a valid language, please try again:\n");
         }
     }
 
     // Validering af age
     int valid_age = 0;
     while (!valid_age) {
-        printf("Indtast din age: ");
+        printf("input your age: ");
         scanf("%d", age);
 
         if (*age > 0 && *age < 120) { // age skal være realistisk
             valid_age = 1;
             system(CLEAR);
         } else {
-            printf("Ugyldig age. Indtast venligst en age mellem 1 og 120.\n");
+            printf("Invalid age input, age input must be between 1-120.\n");
         }
     }
 
     // Validering af antal group
     int valid_group = 0;
     while (!valid_group) {
-        printf("Hvor mange group ser med (1 = alene, 2 = partner, 3 = familie): ");
+        printf("How many people are watching? (1 = alone, 2 = partner, 3 = family): ");
         scanf("%d", group);
 
         if (*group >= 1 && *group <= 3) { // Skal være mellem 1 og 3
             valid_group = 1;
             system(CLEAR);
         } else {
-            printf("Ugyldigt antal group. Indtast 1, 2 eller 3.\n");
+            printf("Invalid group size. Input 1, 2 or 3.\n");
         }
     }
 
@@ -264,17 +264,17 @@ void battle_function (movie movies[]){
     strcpy(battle_array[0].name, movies[0].name); 
     strcpy(battle_array[1].name, movies[1].name); 
 
-    printf("Velkommen til vores battlepicker\n\n");
-    printf("reglerne er at vi praesentere 2 film herefter skal du se traileren og vaelge hvilken af filmene du vil beholde\n");
-    printf("Du skal bare taste 1 eller 2 afhaengig af hvilken film du vil beholde. Dernaest vil vi saette din valgte film ");
-    printf("op mod en anden film hvor du saa skal valege igen. Efter et par runder findes der en vinder\n\n");
-    printf("hvis du har forstaet reglerne tast 1\n\n");
+    printf("Welcome to our battlepicker!\n\n");
+    printf("We will present you two movies, with a link to their trailers, and you then the one want to keep.\n");
+    printf("Just write 1 or 2 to pick the movie.");
+    printf("You will then have to choose between your first selection and a new option. This process repeats a couple of times. \n\n");
+    printf("If you understand the rules, type 1.\n\n");
 
     while (ready_check != 1){ 
         scanf(" %d",&ready_check);
         if (ready_check != 1){
-            printf("Hov jeg tror du har faaet tastet noget forkert. Fik du laest reglerne korrekt\n");
-            printf("Proev venligst igen\n\n");
+            printf("Invalid input, did you read the rules? \n");
+            printf("Please try again.\n\n");
         }
     }
     printf("Lad os starte\n\n");
@@ -284,26 +284,26 @@ void battle_function (movie movies[]){
     for (int i = 0; i < 5; i++){
         kept_movie=0;
         system(CLEAR);
-        printf("Film nr 1: %s\n Traileren: %s \n\n",battle_array[0].name, battle_array[0].link);
-        printf("Film nr 2: %s\n Traileren: %s \n\n",battle_array[1].name, battle_array[1].link);
-        printf("Hvilken vil du helst se? (tast 1 / 2)\n");
+        printf("Movie nr 1: %s\n Trailer: %s \n\n",battle_array[0].name, battle_array[0].link);
+        printf("Movie nr 2: %s\n Trailer: %s \n\n",battle_array[1].name, battle_array[1].link);
+        printf("Which movie do you prefer? (type 1 / 2)\n");
         while (kept_movie != 1 && kept_movie != 2 ){
             scanf(" %d", &kept_movie);
             
 
             if(kept_movie == 1){
-               printf("Godt valg!\n");
+               printf("Nice choice!\n");
                strcpy(battle_array[1].name, movies[j].name);
             }else if (kept_movie == 2){
-               printf("Godt valg!\n");
+               printf("Nice choice!\n");
                strcpy(battle_array[0].name, movies[j].name);
-            }else printf("Du gav et forkert imput proev igen\n");
+            }else printf("Invalid input. Please try again.\n");
         
         }
         j++;
     }
     system(CLEAR);
-    printf("Din valgte film er: %s\n\n", battle_array[kept_movie-1].name);
+    printf("Your chosen movie is: %s\n\n", battle_array[kept_movie-1].name);
 
     
 
