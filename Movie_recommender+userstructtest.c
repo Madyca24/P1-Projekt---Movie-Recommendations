@@ -255,10 +255,6 @@ void recommendation(movie movies[], userprofile user, int length) {
 
     qsort(movies, length, sizeof(movie), comparescores);
 
-    printf("Vores filmanbefallinger:\n");
-    for (int i = 0; i < 5; i++){
-        printf("%s - %.2lf\n", movies[i].name, movies[i].score);
-    }
 }
 
 int comparescores(const void *a, const void *b) {
