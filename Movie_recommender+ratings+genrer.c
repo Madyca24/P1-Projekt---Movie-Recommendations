@@ -190,7 +190,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
     // Validering af age
     int valid_age = 0;
     while (!valid_age) {
-        printf("input your age: ");
+        printf("Input your age: ");
         scanf("%d", age);
 
         if (*age > 0 && *age < 120) { // age skal være realistisk
@@ -277,7 +277,7 @@ void battle_function (movie movies[]){
             printf("Please try again.\n\n");
         }
     }
-    printf("Lad os starte\n\n");
+    printf("Let's begin!\n\n");
 
    
     int j = 2;
