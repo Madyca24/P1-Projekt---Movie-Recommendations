@@ -72,7 +72,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
     // Introduktion til programmet
     printf("************************************************\n");
     printf("*                                              *\n");
-    printf("*               Welcome                        *\n");
+    printf("*                   Welcome!                   *\n");
     printf("*                                              *\n");
     printf("*   This program helps you find a good movie   *\n");
     printf("*   based on your current preferences.         *\n");
@@ -85,7 +85,7 @@ int survey(movie movies[], int length, char *genre1, char *genre2, char *genre3,
     printf("*                                              *\n");
     printf("************************************************\n\n");
 
-    printf("Lad os komme i gang!\n");
+    printf("Let's begin!\n");
 
     // Validering af genre
     int valid_genre1 = 0,
