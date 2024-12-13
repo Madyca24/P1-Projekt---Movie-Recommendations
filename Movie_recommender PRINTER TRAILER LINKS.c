@@ -262,9 +262,11 @@ void recommendation(movie movies[], userprofile user, int length) {
 }
 
 int comparescores(const void *a, const void *b) {
-    if (((movie*)b)->score == ((movie*)a)->score)
+    movie *movie_a = (movie*)a;
+    movie *movie_b = (movie*)b;
+    if (movie_b->score == movie_a->score)
         return 0;
-    else if(((movie*)b)->score > ((movie*)a)->score)
+    else if(movie_b->score > movie_a->score)
         return 1;
     else
         return -1;
