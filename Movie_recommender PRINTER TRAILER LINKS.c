@@ -47,7 +47,7 @@ void recommendation(movie movies[], userprofile user, int length);
 void battle_function (movie movies[]);
 
 int main(void) {
-
+    movie movies[MOVIE_ARRAY_SIZE];
     userprofile user = {"","","","",0,0 };
 
     FILE *f1 = fopen("Movie_dataset.txt", "r");
