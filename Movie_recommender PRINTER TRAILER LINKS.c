@@ -10,26 +10,30 @@
 #endif
 
 #define MOVIE_ARRAY_SIZE 50
-
+#define MAX_MOVIE_NAME_LENGTH 40
+#define MAX_CATEGORY_LENGTH 10
+#define MAX_LANGUAGE_LENGTH 8
+#define MAX_LINK_LENGTH 100
+#define BATTLE_ARRAY_ROUNDS 5
 // structs setup
 
 typedef struct {
-    char name[40];
-    char category_1[10];
-    char category_2[10];
-    char movie_language[8];
+    char name[MAX_MOVIE_NAME_LENGTH];
+    char category_1[MAX_CATEGORY_LENGTH];
+    char category_2[MAX_CATEGORY_LENGTH];
+    char movie_language[MAX_LANGUAGE_LENGTH];
     int age_range;
     int group_size;
     double rating;
-    char link[50];
+    char link[MAX_LINK_LENGTH];
     double score;
 } movie;
 
 typedef struct {
-    char genre1[10];
-    char genre2[10];
-    char genre3[10];
-    char language[8];
+    char genre1[MAX_CATEGORY_LENGTH];
+    char genre2[MAX_CATEGORY_LENGTH];
+    char genre3[MAX_CATEGORY_LENGTH];
+    char language[MAX_LANGUAGE_LENGTH];
     int age;
     int groupsize;
 } userprofile;
@@ -292,7 +296,7 @@ void battle_function (movie movies[]){
 
 
     int j = 2;
-    for (int i = 0; i < 5; i++){
+    for (int i = 0; i < BATTLE_ARRAY_ROUNDS; i++){
         kept_movie=0;
         system(CLEAR);
         printf("Movie nr 1: %s\n Trailer: %s \n\n",battle_array[0].name, battle_array[0].link);
@@ -304,14 +308,12 @@ void battle_function (movie movies[]){
 
             if(kept_movie == 1){
                printf("Nice choice!\n");
-               strcpy(battle_array[1].name, movies[j].name);
+               strcpy(battle_array[1].name, movies[j++].name);
             }else if (kept_movie == 2){
                printf("Nice choice!\n");
-               strcpy(battle_array[0].name, movies[j].name);
+               strcpy(battle_array[0].name, movies[j++].name);
             }else printf("Invalid input. Please try again.\n");
-        
         }
-        j++;
     }
     system(CLEAR);
     printf("Your chosen movie is: %s\n\n", battle_array[kept_movie-1].name);
