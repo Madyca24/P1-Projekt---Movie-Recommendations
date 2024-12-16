@@ -5,8 +5,12 @@
 
 #ifdef _WIN32
     #define CLEAR "cls"
+    #define OPEN_CMD "start"
+#elif __APPLE__
+    #define OPEN_CMD "open"
 #else
     #define CLEAR "clear"
+    #define OPEN_CMD "xdg-open"
 #endif
 
 #define MOVIE_ARRAY_SIZE 50
@@ -45,6 +49,7 @@ int survey(movie movies[], userprofile *user, int length);
 int comparescores(const void* a, const void* b);
 void recommendation(movie movies[], userprofile user, int length);
 void battle_function (movie movies[]);
+void open_trailer(const char* url);
 
 int main(void) {
     movie movies[MOVIE_ARRAY_SIZE];
@@ -303,6 +308,18 @@ void battle_function (movie movies[]){
         system(CLEAR);
         printf("Movie nr 1: %s\n Trailer: %s \n\n",battle_array[0].name, battle_array[0].link);
         printf("Movie nr 2: %s\n Trailer: %s \n\n",battle_array[1].name, battle_array[1].link);
+
+        printf("Would you like to watch trailers? (0 to skip, 1 for movie 1, 2 for movie 2, 3 for both): ");
+        int trailer_choice;
+        scanf("%d", &trailer_choice);
+        
+        if(trailer_choice == 1) open_trailer(battle_array[0].link);
+        if(trailer_choice == 2) open_trailer(battle_array[1].link);
+        if(trailer_choice == 3) {
+            open_trailer(battle_array[0].link);
+            open_trailer(battle_array[1].link);
+        }
+
         printf("Which movie do you prefer? (type 1 / 2)\n");
         while (kept_movie != 1 && kept_movie != 2 ){
             scanf(" %d", &kept_movie);
@@ -322,4 +339,10 @@ void battle_function (movie movies[]){
     system(CLEAR);
     printf("Your chosen movie is: %s\n\n", battle_array[kept_movie-1].name);
 
+}
+
+void open_trailer(const char* url) {
+    char command[80];
+    sprintf(command, "%s %s", OPEN_CMD, url);
+    system(command);
 }
