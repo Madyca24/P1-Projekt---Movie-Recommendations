@@ -311,9 +311,11 @@ void battle_function (movie movies[]){
             if(kept_movie == 1){
                printf("Nice choice!\n");
                strcpy(battle_array[1].name, movies[j++].name);
+               strcpy(battle_array[1].link, movies[j-1].link); 
             }else if (kept_movie == 2){
                printf("Nice choice!\n");
                strcpy(battle_array[0].name, movies[j++].name);
+               strcpy(battle_array[0].link, movies[j-1].link);  
             }else printf("Invalid input. Please try again.\n");
         }
     }
