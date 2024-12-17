@@ -42,10 +42,9 @@ typedef struct {
     int groupsize;
 } userprofile;
 
-movie movies[MOVIE_ARRAY_SIZE];
-
 void read_file(FILE *f1, int length, movie movies[]);
 int survey(movie movies[], userprofile *user, int length);
+void get_valid_genre(char *genre_variable);
 int comparescores(const void* a, const void* b);
 void recommendation(movie movies[], userprofile user, int length);
 void battle_function (movie movies[]);
@@ -105,86 +104,11 @@ int survey(movie movies[], userprofile *user, int length) {
     printf("Let's begin!\n");
 
     // Validates genre
-    int valid_genre1 = 0,
-        valid_genre2 = 0,
-        valid_genre3 = 0;
-    while (!valid_genre1) {
-        printf("Write your three favorite genres here (Action, Comedy, Crime, Drama, Thriller, Horror, Sci-fi, Romance, Fantasy, Animated, Family, Horror, Mystery):\n");
-        scanf("%s", user->genre1);
-         for (int i = 0; user->genre1[i]; i++) {
-        user->genre1[i] = tolower(user->genre1[i]);
-         }
-
-        if (strcmp(user->genre1, "action") == 0 ||
-            strcmp(user->genre1, "comedy") == 0 ||
-            strcmp(user->genre1, "crime") == 0 ||
-            strcmp(user->genre1, "drama") == 0 ||
-            strcmp(user->genre1, "thriller") == 0 ||
-            strcmp(user->genre1, "sci-fi") == 0 ||
-            strcmp(user->genre1, "romance") == 0 ||
-            strcmp(user->genre1, "fantasy") == 0 ||
-            strcmp(user->genre1, "animated") == 0 ||
-            strcmp(user->genre1, "adventure") == 0||
-            strcmp(user->genre1, "family") == 0 ||
-            strcmp(user->genre1, "horror") == 0 ||
-            strcmp(user->genre1, "mystery") == 0 ) {
-            valid_genre1 = 1;
-            
-        } else {
-            printf("The input wasn't a valid genre. Please try again:\n");
-        }
-    }
-
-    while (!valid_genre2) {
-        scanf("%s", user->genre2);
-         for (int i = 0; user->genre2[i]; i++) {
-        user->genre2[i] = tolower(user->genre2[i]);
-         }
-
-        if (strcmp(user->genre2, "action") == 0 ||
-            strcmp(user->genre2, "comedy") == 0 ||
-            strcmp(user->genre2, "crime") == 0 ||
-            strcmp(user->genre2, "drama") == 0 ||
-            strcmp(user->genre2, "thriller") == 0 ||
-            strcmp(user->genre2, "sci-fi") == 0 ||
-            strcmp(user->genre2, "romance") == 0 ||
-            strcmp(user->genre2, "animated") == 0 ||
-            strcmp(user->genre2, "adventure") == 0||
-            strcmp(user->genre2, "fantasy") == 0 ||
-            strcmp(user->genre2, "family") == 0 ||
-            strcmp(user->genre2, "horror") == 0 ||
-            strcmp(user->genre2, "mystery") == 0 ) {
-            valid_genre2 = 1;
-            
-        } else {
-            printf("The input wasn't a valid genre. Please try again:\n");
-        }
-    }
-
-    while (!valid_genre3) {
-        scanf("%s", user->genre3);
-         for (int i = 0; user->genre3[i]; i++) {
-         user->genre3[i] = tolower(user->genre3[i]);
-         }
-        if (strcmp(user->genre3, "action") == 0 ||
-            strcmp(user->genre3, "comedy") == 0 ||
-            strcmp(user->genre3, "crime") == 0 ||
-            strcmp(user->genre3, "drama") == 0 ||
-            strcmp(user->genre3, "thriller") == 0 ||
-            strcmp(user->genre3, "sci-fi") == 0 ||
-            strcmp(user->genre3, "romance") == 0 ||
-            strcmp(user->genre3, "animated") == 0 ||
-            strcmp(user->genre3, "adventure") == 0||
-            strcmp(user->genre3, "fantasy") == 0 ||
-            strcmp(user->genre3, "family") == 0 ||
-            strcmp(user->genre3, "horror") == 0 ||
-            strcmp(user->genre3, "mystery") == 0 ) {
-            valid_genre3 = 1;
-            system(CLEAR);
-        } else {
-            printf("The input wasn't a valid genre. Please try again:\n");
-        }
-    }
+    printf("Write your three favorite genres here (Action, Comedy, Crime, Drama, Thriller, Horror, Sci-fi, Romance, Fantasy, Animated, Family, Horror, Mystery):\n");
+    get_valid_genre(user->genre1);
+    get_valid_genre(user->genre2);
+    get_valid_genre(user->genre3);
+    system(CLEAR);
 
     // Validates language
     int valid_language = 0;
@@ -238,6 +162,34 @@ int survey(movie movies[], userprofile *user, int length) {
         system(CLEAR);
 
         return 0;
+}
+
+void get_valid_genre(char *genre_variable) {
+    char input[MAX_CATEGORY_LENGTH];
+    int valid = 0;
+    const char *valid_genres[] = {
+        "action", "comedy", "crime", "drama", "thriller",
+        "sci-fi", "romance", "fantasy", "animated", "adventure",
+        "family", "horror", "mystery"
+    };
+    int num_valid_genres = sizeof(valid_genres) / sizeof(valid_genres[0]);
+
+    while (!valid) {
+        scanf("%s", input);
+        for (int i = 0; input[i]; i++) {
+            input[i] = tolower(input[i]);
+        }
+        for (int i = 0; i < num_valid_genres; i++) {
+            if (strcmp(input, valid_genres[i]) == 0) {
+                valid = 1;
+                break;
+            }
+        }
+        if (!valid) {
+            printf("The input wasn't a valid genre. Please try again:\n");
+        }
+    }
+    strcpy(genre_variable, input);
 }
 
 
