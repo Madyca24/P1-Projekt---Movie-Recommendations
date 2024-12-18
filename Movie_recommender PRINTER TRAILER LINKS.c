@@ -8,6 +8,7 @@
     #define OPEN_CMD "start"
 #elif __APPLE__
     #define OPEN_CMD "open"
+    #define CLEAR "clear"
 #else
     #define CLEAR "clear"
     #define OPEN_CMD "xdg-open"
